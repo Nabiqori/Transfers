@@ -33,7 +33,6 @@ class Player(models.Model):
         return self.name
 class Transfer(models.Model):
     player = models.ForeignKey(Player, on_delete=models.CASCADE)
-    name = models.CharField(max_length=255)
     club_from = models.ForeignKey(Club, on_delete=models.CASCADE, related_name="club_from")
     club_to = models.ForeignKey(Club, on_delete=models.CASCADE, related_name="club_to")
     season = models.ForeignKey(Season, on_delete=models.CASCADE)
@@ -42,4 +41,6 @@ class Transfer(models.Model):
     datetime = models.DateTimeField(blank=True, null=True)
 
     def __str__(self):
-        return f"{self.name} | {self.club_from} - {self.club_to}"
+        return f"{self.player} | {self.club_from} - {self.club_to}"
+
+
